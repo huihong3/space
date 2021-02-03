@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.huihongyhy.xyz/posts/10/</loc>
+    
+    <lastmod>2021-02-02</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.huihongyhy.xyz/posts/9/</loc>
     
     <lastmod>2021-02-01</lastmod>
@@ -116,99 +123,106 @@
 
   <url>
     <loc>http://blog.huihongyhy.xyz/</loc>
-    <lastmod>2021-02-02</lastmod>
+    <lastmod>2021-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>http://blog.huihongyhy.xyz/tags/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2021-02-02</lastmod>
+    <loc>http://blog.huihongyhy.xyz/tags/%E6%9D%82%E8%B0%88/</loc>
+    <lastmod>2021-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://blog.huihongyhy.xyz/tags/%E6%9D%82%E8%B0%88/</loc>
-    <lastmod>2021-02-02</lastmod>
+    <loc>http://blog.huihongyhy.xyz/tags/%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2021-02-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.huihongyhy.xyz/tags/electron/</loc>
+    <lastmod>2021-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.huihongyhy.xyz/tags/%E5%88%86%E4%BA%AB/</loc>
-    <lastmod>2021-02-02</lastmod>
+    <lastmod>2021-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.huihongyhy.xyz/tags/%E8%BD%AF%E4%BB%B6/</loc>
-    <lastmod>2021-02-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.huihongyhy.xyz/tags/SEO/</loc>
-    <lastmod>2021-02-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.huihongyhy.xyz/tags/hexo/</loc>
-    <lastmod>2021-02-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.huihongyhy.xyz/tags/Typora/</loc>
-    <lastmod>2021-02-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.huihongyhy.xyz/tags/PicGO/</loc>
-    <lastmod>2021-02-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.huihongyhy.xyz/tags/%E5%AE%89%E8%A3%85%E5%8C%85/</loc>
-    <lastmod>2021-02-02</lastmod>
+    <lastmod>2021-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.huihongyhy.xyz/tags/%E5%9B%BE%E7%89%87/</loc>
-    <lastmod>2021-02-02</lastmod>
+    <lastmod>2021-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.huihongyhy.xyz/tags/WORDPRESS/</loc>
-    <lastmod>2021-02-02</lastmod>
+    <lastmod>2021-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.huihongyhy.xyz/tags/minecraft/</loc>
-    <lastmod>2021-02-02</lastmod>
+    <lastmod>2021-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.huihongyhy.xyz/tags/%E6%B8%B8%E6%88%8F/</loc>
-    <lastmod>2021-02-02</lastmod>
+    <lastmod>2021-02-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.huihongyhy.xyz/tags/SEO/</loc>
+    <lastmod>2021-02-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.huihongyhy.xyz/tags/hexo/</loc>
+    <lastmod>2021-02-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.huihongyhy.xyz/tags/Typora/</loc>
+    <lastmod>2021-02-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.huihongyhy.xyz/tags/PicGO/</loc>
+    <lastmod>2021-02-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.huihongyhy.xyz/tags/%E5%AE%89%E8%A3%85%E5%8C%85/</loc>
+    <lastmod>2021-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -216,29 +230,29 @@
 
   
   <url>
-    <loc>http://blog.huihongyhy.xyz/categories/%E6%95%99%E7%A8%8B%E6%96%87%E7%AB%A0/</loc>
-    <lastmod>2021-02-02</lastmod>
+    <loc>http://blog.huihongyhy.xyz/categories/%E6%9D%82%E8%B0%88%E6%96%87%E7%AB%A0/</loc>
+    <lastmod>2021-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://blog.huihongyhy.xyz/categories/%E6%9D%82%E8%B0%88%E6%96%87%E7%AB%A0/</loc>
-    <lastmod>2021-02-02</lastmod>
+    <loc>http://blog.huihongyhy.xyz/categories/%E6%95%99%E7%A8%8B%E6%96%87%E7%AB%A0/</loc>
+    <lastmod>2021-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.huihongyhy.xyz/categories/%E8%BD%AF%E4%BB%B6%E5%88%86%E4%BA%AB/</loc>
-    <lastmod>2021-02-02</lastmod>
+    <lastmod>2021-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://blog.huihongyhy.xyz/categories/%E6%97%A5%E5%B8%B8%E5%88%86%E4%BA%AB/</loc>
-    <lastmod>2021-02-02</lastmod>
+    <lastmod>2021-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
