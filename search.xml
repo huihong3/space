@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Fusion App-所有网页都是客户端</title>
+      <link href="posts/16/"/>
+      <url>posts/16/</url>
+      
+        <content type="html"><![CDATA[<p>今天给大家推荐的是一款手机软件——Fusion App。</p><p>这个软件十分的有意思，正如他的开发者所说的那样：这是一个”网页转应用”的应用。</p><p>这款软件功能十分强大，操作又十分方便，我相信你用过之后一定会爱上它。</p><p>软件自带了几个UI模板，上手十分方便。只需要你动动手指，一款软件就诞生了。</p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/xct-180567-o_1c9ej8m7i1n60jl2mq81skhp45s-uid-675594@1080x1920.png.t.jpg" alt="img"></p><p>它还可以将网页中的组件删除，替换为安卓的原生组件，让你的网页看起来更像是一款软件。</p><p>它将复杂的代码编辑页面可视化，让简单的功能操作起来更方便，复杂的功能还可以用代码来实现，这一点做的十分不错。</p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/xct2-180567-o_1c9ej8m7j1oc61v24uah1ru41mc9t-uid-675594@1080x1920.png.t.jpg" alt="img"></p><p>软件还提供了图标库，可以为你的软件增加一些点缀。</p><p>就说这么多了，这个软件不用过多的介绍，因为操作起来很容易，吹爆开发者。</p><p>另外，我在酷安上看到开发者说二代正在开发中，让我们来期待一下二代吧。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 分享 </tag>
+            
+            <tag> 软件 </tag>
+            
+            <tag> Fusion App </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Electron自定义菜单栏</title>
       <link href="posts/15/"/>
       <url>posts/15/</url>
