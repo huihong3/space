@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>利用PyInstaller将Python代码编译为exe可执行文件</title>
+      <link href="posts/2/"/>
+      <url>posts/2/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>利用 <code>PyInstaller</code> 可以将 <code>Python代码</code> 编译为 <code>exe可执行文件</code> ，实现在Windows平台上的运行。</p><p>注意：你的计算机需要有Python环境，才能进行以下操作！</p><h3 id="安装PyInstaller"><a href="#安装PyInstaller" class="headerlink" title="安装PyInstaller"></a>安装PyInstaller</h3><p>使用pip包管理器安装PyInstaller，在命令行输入以下命令即可：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyinstaller</span><br></pre></td></tr></table></figure><h3 id="编译生成可执行文件"><a href="#编译生成可执行文件" class="headerlink" title="编译生成可执行文件"></a>编译生成可执行文件</h3><p>创建一个文件夹，命名任意，这里举例取名为 “new” 。</p><p>将Python代码文件移动到此文件夹。</p><p>打开命令行工具，进入到 “new” 目录下，输入以下命令即可开始编译：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller -F -w 源文件.py</span><br></pre></td></tr></table></figure><p>这里的 -F 表示编译为单个文件（如果想生成多个文件可将 -F 替换为 -D）， -w 表示程序运行时不显示命令行窗口。</p><p>注意：这里的 “源文件.py” 应该替换为你自己的Python代码文件名。如果是单个代码文件，直接替换为文件名；如果是多个文件，替换为入口主文件的命名。</p><p>如果想自定义exe的图标，可以执行以下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller -F -w -i 图标源文件.ico 源文件.py</span><br></pre></td></tr></table></figure><p>这里的 “图标源文件.ico” 同理也要替换为你自己的图标文件名。</p><p>注意：图标的格式只能为 ico ，其他的例如 png 都不可以。</p><h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3><p>执行完命令后发现 “new” 目录下多了一些文件夹和文件。</p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210813192244145.png" alt="image-20210813192244145"></p><p>进入 “dist” 文件夹，就是你生成的exe可执行文件了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程文章 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Electron自定义菜单栏</title>
+      <link href="posts/15/"/>
+      <url>posts/15/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210203144717078.png" alt="image-20210203144717078"></p><p>之前发过一篇文章，名为 <code>利用electron框架构建桌面级应用</code> ，大家可以去支持一下这篇文章。</p><p>通过阅读之前发的那篇文章，相信大家已经对electron有了一定的了解。</p><p>那么今天就来给大家分享一下如何自定义electron应用的菜单栏。</p><p>其实很简单，只需要修改 <code>main.js</code> 文件即可。</p><p>可以参考一下我的 <code>main.js</code> 的配置：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> electron = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> BrowserWindow = electron.BrowserWindow</span><br><span class="line"><span class="keyword">const</span> Menu = electron.Menu</span><br><span class="line"><span class="keyword">const</span> app = electron.app</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createWindow</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> win = <span class="keyword">new</span> BrowserWindow(&#123;</span><br><span class="line">    width: <span class="number">414</span>,</span><br><span class="line">    height: <span class="number">700</span>,</span><br><span class="line">    webPreferences: &#123;</span><br><span class="line">      nodeIntegration: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  win.loadFile(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.whenReady().then(createWindow)</span><br><span class="line"></span><br><span class="line">app.on(<span class="string">&#x27;window-all-closed&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (process.platform !== <span class="string">&#x27;darwin&#x27;</span>) &#123;</span><br><span class="line">    app.quit()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.on(<span class="string">&#x27;activate&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (BrowserWindow.getAllWindows().length === <span class="number">0</span>) &#123;</span><br><span class="line">    createWindow()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Menus = [</span><br><span class="line">    &#123;</span><br><span class="line">        label:<span class="string">&#x27;首页&#x27;</span>,</span><br><span class="line">        click: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">const</span> win = <span class="keyword">new</span> BrowserWindow(&#123;</span><br><span class="line">            width: <span class="number">414</span>,</span><br><span class="line">            height: <span class="number">700</span>,</span><br><span class="line">            webPreferences: &#123;</span><br><span class="line">              nodeIntegration: <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">          win.loadFile(<span class="string">&#x27;index.html&#x27;</span>)&#125;</span><br><span class="line">             </span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        label: <span class="string">&#x27;关于&#x27;</span>,</span><br><span class="line">        click: <span class="function"><span class="keyword">function</span> (<span class="params">item, focusedWindow</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (focusedWindow) &#123;</span><br><span class="line">        <span class="keyword">const</span> options = &#123;</span><br><span class="line">            type: <span class="string">&#x27;info&#x27;</span>,</span><br><span class="line">            title: <span class="string">&#x27;标题&#x27;</span>,</span><br><span class="line">            buttons: [<span class="string">&#x27;按钮&#x27;</span>],</span><br><span class="line">            message: <span class="string">&#x27;信息内容&#x27;</span>&#125;</span><br><span class="line">        electron.dialog.showMessageBox(focusedWindow, options, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;)&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        label:<span class="string">&#x27;帮助&#x27;</span>,</span><br><span class="line">        submenu:[</span><br><span class="line">            &#123;</span><br><span class="line">                </span><br><span class="line">                    label: <span class="string">&#x27;访问网站&#x27;</span>,</span><br><span class="line">                    click: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                        electron.shell.openExternal(<span class="string">&#x27;https://greyh.cn&#x27;</span>)</span><br><span class="line">                    &#125;</span><br><span class="line">      </span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">              </span><br><span class="line">              </span><br><span class="line">                    label: <span class="string">&#x27;联系我们&#x27;</span>,</span><br><span class="line">                    click: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                        electron.shell.openExternal(<span class="string">&#x27;https://greyh.cn&#x27;</span>)</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">            </span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mainMenu = Menu.buildFromTemplate(Menus);</span><br><span class="line">    Menu.setApplicationMenu(mainMenu);</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>可以参考我上面的代码，删除不需要的内容，做出适当修改即可。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程文章 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> electron </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>域名更换通知</title>
+      <link href="posts/14/"/>
+      <url>posts/14/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/Internet.png" alt="Internet"></p><h2 id="重要通知"><a href="#重要通知" class="headerlink" title="重要通知:"></a>重要通知:</h2><p>网站的首页域名已经更换为 <a href="https://greyh.cn/">https://greyh.cn</a> ，空间域名已更改为 <a href="https://space.greyh.cn/">https://space.greyh.cn</a> 。</p><p>旧站即将关闭，如果您不较快的保存好新站链接，可能会导致您再也无法找到我们。</p><p>请大家保存好新站的链接，<code>Ctrl + D</code> 保存网页不迷路。</p><p>旧站会在今年七月彻底关闭进入渠道，望周知！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂谈文章 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 杂谈 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>新年快乐！</title>
+      <link href="posts/13/"/>
+      <url>posts/13/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/newyear.png"></p><p><strong>女士们，先生们，大家下午好！今天是2021-02-11，农历腊月三十，中国的传统节日——除夕。</strong></p><p><strong>今日是庚子鼠年的最后一天，名为除夕，除夕也意味着旧岁至此而除，另换新岁。</strong></p><p><strong>今天我就在大年三十的下午给大家拜个早年，提前祝大家新年快乐！</strong></p><p><strong>我祝大家在新的一年里天天有好事，笑口常开，天天没烦恼！</strong></p><p><strong>也祝大家在新的一年里天天发大财，全家欢乐，天天心想事成！</strong></p><p><strong>又祝大家在新的一年里天天有钱花，寿比南山，天天幸福美满！</strong></p><p><strong>还祝大家在新的一年里事事顺心，前程似锦，万事大吉！</strong></p><p>灰鸿的空间也会在新的一年里给大家送出更多的文章，希望大家多多关照！</p><p>虽然我写的文章水平很低，但只要有人看，我还是会继续写下去的！</p><p>感谢大家的长期支持！</p><p>灰鸿YHY在这里祝大家在新的一年里可以浏览到更多的好文章！</p><p>谢谢！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂谈文章 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 杂谈 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo博客Butterfly主题的Valine评论系统美化</title>
+      <link href="posts/12/"/>
+      <url>posts/12/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>本教程针对Butterfly主题3.6.0版本，不同版本可能不支持此教程的内容</p></blockquote><p>本教程主要是针对Butterfly主题下的Valine评论系统的美化，添加博主，小伙伴，访客等标签，以及评论者的操作系统，浏览器的图标。效果如下图：</p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210207172424500.png" alt="image-20210207172424500"></p><h3 id="引入修改版valine-min-js"><a href="#引入修改版valine-min-js" class="headerlink" title="引入修改版valine.min.js"></a>引入修改版valine.min.js</h3><p>在主题配置文件中查找 <code>valine.min.js</code> ，找到后将原本的 <code>valine.min.js</code> 注释掉，引入修改的 <code>valine.min.js</code> </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">valine: https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;HCLonely&#x2F;Valine@latest&#x2F;dist&#x2F;Valine.min.js</span><br></pre></td></tr></table></figure><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210207173309134.png" alt="image-20210207173309134"></p><blockquote><p>修改版valine.min.js的作者为 <a href="https://blog.hclonely.com/">HClonely</a></p></blockquote><h3 id="修改valine-pug"><a href="#修改valine-pug" class="headerlink" title="修改valine.pug"></a>修改valine.pug</h3><p>在themes\butterfly\layout\includes\third-party\comments\目录下找到 <code>valine.pug</code> ，用编辑器打开它</p><p>在图片所示的位置添加以下代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">master: &#39;此处写博主邮箱的32位小写md5编码&#39;,</span><br><span class="line">friends: [&quot;此处写小伙伴邮箱的32位小写md5编码&quot;],</span><br><span class="line">tagMeta: [&quot;博主&quot;,&quot;小伙伴&quot;,&quot;访客&quot;],</span><br></pre></td></tr></table></figure><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210207173955432.png" alt="image-20210207173955432"></p><h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>做出以上修改后保存文件，就可以运行了</p><p>先运行 <code>hexo clean</code> ，后运行 <code>hexo g</code></p><blockquote><p>新版Butterfly主题已经支持Valine评论框的背景图了，我这里就不写教程了，请大家阅读主题文档</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程文章 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>为hexo博客添加追番页面</title>
+      <link href="posts/11/"/>
+      <url>posts/11/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210206115649544.png" alt="image-20210206115649544"></p><h3 id="安装追番插件"><a href="#安装追番插件" class="headerlink" title="安装追番插件"></a>安装追番插件</h3><p>在博客目录下运行命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-bilibili-bangumi --save</span><br></pre></td></tr></table></figure><h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>将下面内容写入博客配置文件 <code>_config.yml</code> ，这里注意：不是主题配置文件！</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">bangumi:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment">#开启插件</span></span><br><span class="line">  <span class="attr">path:</span><span class="comment">#生成的页面路径</span></span><br><span class="line">  <span class="attr">vmid:</span><span class="comment">#b站用户uid，需要将追番列表设置为公开</span></span><br><span class="line">  <span class="attr">title:</span> <span class="string">&#x27;追番列表&#x27;</span><span class="comment">#标题</span></span><br><span class="line">  <span class="attr">quote:</span> <span class="string">&#x27;生命不息，追番不止！&#x27;</span> <span class="comment">#副标题</span></span><br><span class="line">  <span class="attr">show:</span> <span class="number">1</span> <span class="comment">#初始页面，0为想看 1为在看 2为看过</span></span><br><span class="line">  <span class="attr">loading:</span></span><br><span class="line">  <span class="attr">metaColor:</span></span><br><span class="line">  <span class="attr">color:</span></span><br><span class="line">  <span class="attr">webp:</span></span><br><span class="line">  <span class="attr">progress:</span></span><br></pre></td></tr></table></figure><h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><h4 id="1-添加数据"><a href="#1-添加数据" class="headerlink" title="1.添加数据"></a>1.添加数据</h4><p>在运行 <code>hexo d</code> 和 <code>hexo g</code> 之前使用 <code>hexo bangumi -u</code> 命令</p><h4 id="2-删除数据"><a href="#2-删除数据" class="headerlink" title="2.删除数据"></a>2.删除数据</h4><p>运行 <code>hexo bangumi -d</code> 命令</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程文章 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>利用electron框架构建桌面级应用</title>
+      <link href="posts/10/"/>
+      <url>posts/10/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210203144717078.png" alt="image-20210203144717078"></p><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>electron是一个可以利用 <code>JavaScript</code> <code>HTML</code> <code>CSS</code> 等技术构建原生程序的框架，也就是说，利用electron可以让我们使用<code>web技术</code>来开发桌面应用。electron的<code>GUI核心</code>来自于<code>Chrome</code>，使用<code>V8（JavaScript引擎）</code>，本身是基于<code>C++</code>编写的。市面上很多的程序，都是用electron开发的，例如：vscode atom 等。</p><p>electron一个很大的特点就是<code>跨平台</code>。electron兼容<code>Windows</code>，<code>Linux</code>以及<code>Mac</code>平台，利用electron开发的程序可以在这几个平台上运行。electron基于<code>chromium</code>，<code>nodejs</code>，这就让你可以用HTML CSS JavaScript构建应用。并且还是开源的，拥有活跃的社区来维护项目。</p><p>讲了这么多，现在就让我们来构建第一个属于自己的electron程序吧！</p><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>使用electron前，你需要安装<code>nodejs</code>。在终端输入以下命令，来检查nodejs是否安装 :</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure><p>如果终端返回了相对应的nodejs与npm的版本信息，那么恭喜你，你可以进行下一步了；如果没有返回，那么你则需要安装nodejs与npm，然后重新输入命令检查，再进行下一步。</p><h3 id="安装Electron"><a href="#安装Electron" class="headerlink" title="安装Electron"></a>安装Electron</h3><p>你可以创建一个名为”electron-app”的文件夹，然后打开它，并在这个文件夹当中执行终端。输入以下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save-dev electron</span><br></pre></td></tr></table></figure><h3 id="Electron的基本目录结构"><a href="#Electron的基本目录结构" class="headerlink" title="Electron的基本目录结构"></a>Electron的基本目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">electron-app&#x2F;</span><br><span class="line">├── package.json</span><br><span class="line">├── main.js</span><br><span class="line">└── index.html</span><br></pre></td></tr></table></figure><p>我们可以通过上面的结构，分别将 <code>package.json</code> <code>main.js</code> <code>index.html</code> 创建出来。</p><h3 id="创建main-js"><a href="#创建main-js" class="headerlink" title="创建main.js"></a>创建main.js</h3><p>在electron-app目录下创建 <code>main.js</code> 文件（<code>main.js</code>是electron的主脚本文件，它指定了运行主进程electron程序的入口，在electron程序中，只能有一个 <code>main.js</code> 文件），你可以在 <code>main.js</code> 中输入以下代码：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> electron = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>) <span class="comment">//导入模块</span></span><br><span class="line"><span class="keyword">const</span> BrowserWindow = electron.BrowserWindow</span><br><span class="line"><span class="keyword">const</span> Menu = electron.Menu</span><br><span class="line"><span class="keyword">const</span> app = electron.app</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createWindow</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> win = <span class="keyword">new</span> BrowserWindow(&#123;</span><br><span class="line">    width: <span class="number">414</span>, <span class="comment">//定义窗口行高</span></span><br><span class="line">    height: <span class="number">700</span>,</span><br><span class="line">    webPreferences: &#123;</span><br><span class="line">      nodeIntegration: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  win.loadFile(<span class="string">&#x27;index.html&#x27;</span>) <span class="comment">//将index.html导入窗口</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.whenReady().then(createWindow) <span class="comment">//创建窗口</span></span><br><span class="line"><span class="comment">//侦听器</span></span><br><span class="line">app.on(<span class="string">&#x27;window-all-closed&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (process.platform !== <span class="string">&#x27;darwin&#x27;</span>) &#123;</span><br><span class="line">    app.quit()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.on(<span class="string">&#x27;activate&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (BrowserWindow.getAllWindows().length === <span class="number">0</span>) &#123;</span><br><span class="line">    createWindow()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h3 id="创建index-html"><a href="#创建index-html" class="headerlink" title="创建index.html"></a>创建index.html</h3><p>我们在 <code>main.js</code> 文件当中，将 <code>index.html</code> 文件加载到了窗口当中，那么<code>index.html</code>文件就是窗口的内容了</p><p><code>index.html</code> 文件可以这样写：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Security-Policy&quot;</span> <span class="attr">content</span>=<span class="string">&quot;script-src &#x27;self&#x27; &#x27;unsafe-inline&#x27;;&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">&quot;background: white;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        这是我的第一个electron程序！</span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="修改package-json"><a href="#修改package-json" class="headerlink" title="修改package.json"></a>修改package.json</h3><p>编辑 <code>package.json</code> ，改为下面内容:</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;electron-app&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.1.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;name&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;Electron app&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;main.js&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;start&quot;</span>: <span class="string">&quot;electron .&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="运行程序"><a href="#运行程序" class="headerlink" title="运行程序"></a>运行程序</h3><p>就这样，你的第一个electron程序已经编写好了，输入下面的命令来运行它吧：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure><p>运行成功:</p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210202230551411.png" alt="image-20210202230551411"></p><h3 id="打包程序"><a href="#打包程序" class="headerlink" title="打包程序"></a>打包程序</h3><h4 id="1-导入-Electron-Forge"><a href="#1-导入-Electron-Forge" class="headerlink" title="1.导入 Electron Forge"></a>1.导入 <code>Electron Forge</code></h4><p>在终端输入下面的命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx @electron-forge&#x2F;cli import</span><br></pre></td></tr></table></figure><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210203143531088.png" alt="image-20210203143531088"></p><h4 id="2-创建分发版本"><a href="#2-创建分发版本" class="headerlink" title="2.创建分发版本"></a>2.创建分发版本</h4><p>在终端输入以下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run make</span><br></pre></td></tr></table></figure><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210203143845347.png" alt="image-20210203143845347"></p><p>我们的第一个electron程序就被打包在out目录下了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程文章 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> electron </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用NSIS制作安装包以及注意事项</title>
+      <link href="posts/9/"/>
+      <url>posts/9/</url>
+      
+        <content type="html"><![CDATA[<h3 id="软件介绍"><a href="#软件介绍" class="headerlink" title="软件介绍"></a>软件介绍</h3><p>NSIS（Nullsoft Scriptable Install System）是一个开源的 Windows 系统下安装程序制作程序。它提供了安装、卸载、系统设置、文件解压缩等功能。这如其名字所指出的那样，NSIS 是通过它的脚本语言来描述安装程序的行为和逻辑的。NSIS 的脚本语言和通常的编程语言有类似的结构和语法，但它是为安装程序这类应用所设计的。</p><p>——百度百科</p><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><p><strong>下载并安装NSIS(增强汉化版)</strong></p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210201165047198.png" alt="image-20210201165047198"></p><h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><p><strong>打开软件并点击编译脚本VNISEdit</strong></p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210201165247818.png" alt="image-20210201165247818"></p><h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4><p><strong>选择 <code>文件 ---&gt; 新建脚本:向导</code></strong></p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210201165451285.png" alt="image-20210201165451285"></p><h4 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h4><p><strong>点击下一步</strong></p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210201165616680.png" alt="image-20210201165616680"></p><h4 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h4><p><strong>按照表单填写好软件信息:</strong></p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210201165721123.png" alt="image-20210201165721123"></p><h4 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h4><p><strong>配置好安装程序的图标，选择好输出位置，将安装程序语言设置为<code>简体中文(SimpChinese)</code>，其他的不用更改，直接点击下一步</strong></p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210201170026938.png" alt="image-20210201170026938"></p><h4 id="7"><a href="#7" class="headerlink" title="7."></a>7.</h4><p><strong>直接点击下一步</strong></p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210201170244898.png" alt="image-20210201170244898"></p><h4 id="8"><a href="#8" class="headerlink" title="8."></a>8.</h4><p><strong>设置好程序的默认安装目录，选择好授权文件，这里要注意，授权文件如果是中文的话，编码要设置为<code>带有BOM的UTF-8</code></strong></p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210201170350564.png" alt="image-20210201170350564"></p><h4 id="9"><a href="#9" class="headerlink" title="9."></a>9.</h4><p><strong>删掉默认的两个路径，添加上你自己程序的文件，这里极容易出错，一定要仔细做这一步</strong></p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210201170745229.png" alt="image-20210201170745229"></p><h4 id="10"><a href="#10" class="headerlink" title="10."></a>10.</h4><p><strong>按自己的需求设置</strong></p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210201170926186.png" alt="image-20210201170926186"></p><h4 id="11"><a href="#11" class="headerlink" title="11."></a>11.</h4><p><strong>直接点击下一步</strong></p><h4 id="12"><a href="#12" class="headerlink" title="12."></a>12.</h4><p><strong>按照自己需求自行设置</strong></p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210201171114336.png" alt="image-20210201171114336"></p><h4 id="13"><a href="#13" class="headerlink" title="13."></a>13.</h4><p><strong>全部勾选，并点击<code>完成</code>，安装包就会生成到你所指定的位置了</strong></p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210201171247724.png" alt="image-20210201171247724"></p><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><h4 id="1-授权文件"><a href="#1-授权文件" class="headerlink" title="1.授权文件"></a>1.授权文件</h4><p>授权文件如果是中文，编码要设置为<code>带有BOM的UTF-8</code>，否则会乱码</p><h4 id="2-应用程序文件"><a href="#2-应用程序文件" class="headerlink" title="2.应用程序文件"></a>2.应用程序文件</h4><p>在选择你自己的应用程序文件之前，一定要删除原有的两个文件</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> 软件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用Typora与PicGO实现图片的Gitee服务器上传</title>
+      <link href="posts/8/"/>
+      <url>posts/8/</url>
+      
+        <content type="html"><![CDATA[<p>很多人都喜欢用Markdown文档来写文章，使用Markdown语法那么最好用的编辑器就是Typora了。但是，当大家使用Typora的时候，插入图片往往插入的是本地图片，不是网络图片。这将会导致大家将文章发布到多个平台时会遇到图片不显示的问题，这就需要网络图床了。然而，很多免费的图床都不是很好用，花钱买服务器又不值得，这里我推荐一下我的方案:Typora + PicGo + Gitee。</p><p>使用Typora与PicGO实现图片的Gitee服务器上传可以让写文章的效率变得更快。当你写文章需要插入图片的时候只需要将图片复制粘贴到typora，picgo就会自动将你的图片上传到Gitee服务器并自动部署网站链接，typora这边也将会自动把你粘贴的图片自动替换成gitee的网络链接。在这个过程中，速度是非常快的。那么下面就是教程:</p><h3 id="1-Gitee"><a href="#1-Gitee" class="headerlink" title="1.Gitee"></a>1.Gitee</h3><p>①进入gitee，创建一个公有仓库，并部署gitee pages服务</p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210124194908893.png" alt="image-20210124194908893"></p><p>②进入设置，私人令牌，创建一个新的私人令牌，并获取<code>token</code>，一定要妥善保管好<code>token</code>，后面要用到</p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210124195105431.png" alt="image-20210124195105431"></p><h3 id="2-PicGo"><a href="#2-PicGo" class="headerlink" title="2.PicGo"></a>2.PicGo</h3><p>①下载并安装PicGo</p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210124195326087.png" alt="image-20210124195326087"></p><p>②下载gitee插件</p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210124195435404.png" alt="image-20210124195435404"></p><p>③配置Gitee，rope为 <code>用户名/仓库名</code>，设置为默认图床</p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210124195541360.png" alt="image-20210124195541360"></p><h3 id="3-Typora"><a href="#3-Typora" class="headerlink" title="3.Typora"></a>3.Typora</h3><p>①依次点击文件，偏好设置，图像，按照我下面的图配置:</p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/image-20210124195827015.png" alt="image-20210124195827015"></p><h3 id="4-结束"><a href="#4-结束" class="headerlink" title="4.结束"></a>4.结束</h3><p>到这里就配置结束了，当你把图片粘贴到Typora时，picgo就会自动将图片上传到服务器，typora就是自动将本地路径替换成网络路径了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> 软件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo博客的高级SEO优化</title>
+      <link href="posts/7/"/>
+      <url>posts/7/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>不少人正在用基于hexo的方法来搭建博客，但是自己搭建的博客搜索引擎不常常光顾，这时候就需要SEO优化了。以下的方法纯属本人经验，希望对你有所帮助，如果你还有更好的方法，可以留言反馈。</p><hr><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><p><strong>查询你的网站是否被搜索引擎收录</strong></p><p>使用高级搜索 <code>site:</code> 来查询你的网站是否被该搜索引擎收录</p><p>在搜索框内键入 <code>site:你的网站域名</code> 来验证你的网站是否被收录</p><img src="http://huihongyhy.gitee.io/imgbed/hexoseo/1.png" style="zoom: 67%;" /><img src="http://huihongyhy.gitee.io/imgbed/hexoseo/2.png" style="zoom:67%;" /><p>如果你用<code>site:</code>高级搜索没有搜索到你的网站，那么说明你的网站并没有被搜索引擎收录。</p><p>如果搜索到了，但通过网站的关键词搜索不到，说明你的网站排名靠后，正需要SEO优化。</p><h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><p><strong>将你的网站提交给百度/谷歌</strong></p><p>没有被搜索引擎收录的情况下，不要慌，我们可以提交我们的网站给搜索引擎。</p><p>以百度举例，首先，进入百度搜索资源平台</p><img src="http://huihongyhy.gitee.io/imgbed/hexoseo/3.png" style="zoom:67%;" /><p>进入之后在用户中心里找到站点管理，点击即可进入</p><img src="http://huihongyhy.gitee.io/imgbed/hexoseo/4.png" style="zoom:67%;" /><p>点击添加网站，选择你的协议头 http/https 按照自身情况选择，输入你的网站地址，点击下一步</p><p>在下一步里选择你站点的类型，即可进入验证网站阶段</p><img src="http://huihongyhy.gitee.io/imgbed/hexoseo/5.png" style="zoom:67%;" /><p>一般验证网站有以下几种验证方法:</p><p>文件验证   html标签验证   CNAME验证</p><p>文件验证是指将百度给你的html文件上传到你的网站的根目录(<strong>在hexo博客里是放在…\source路径下上传</strong>)</p><p>html标签验证则是在head标签里添加百度所指定的代码</p><p>CNAME验证就是添加域名解析记录</p><p>对于hexo的博客来说，我个人建议CNAME和文件验证这两种</p><p><strong>值得注意的是:文件验证的文件是一个HTML文件，hexo可能会将他与主题镶嵌在一起，所以要在百度给你的HTML文件上加入以下代码:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">layout: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure><p>网站验证成功后，就可以在站点管理管理你的网站了。</p><p>谷歌提交网站则是访问Google Search Console，同理，我就不再举例了。</p><p>提交完你的网站后，不出意外的情况下，搜索引擎会在几个星期内收录你的网站，一般不超过一个月，超过一个月的话可能就有问题了。</p><h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><p><strong>添加sitemap站点地图</strong></p><p>sitemap站点地图可以让搜索引擎更便捷的抓取你的网站，一般为XML文件。</p><p>hexo有两个插件可以自动生成sitemap：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure><p>安装完成后，进入根目录的_config.yml配置文件，添加以下代码:</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自动生成sitemap</span></span><br><span class="line"><span class="attr">sitemap:</span></span><br><span class="line"><span class="attr">path:</span> <span class="string">sitemap.xml</span></span><br><span class="line"><span class="attr">baidusitemap:</span></span><br><span class="line"><span class="attr">path:</span> <span class="string">baidusitemap.xml</span></span><br></pre></td></tr></table></figure><p>每次运行hexo g ，则会在缓存文件夹下生成<code>sitemap.xml</code> <code>baidusitemap.xml</code>则为成功。</p><p>生成了sitemap后，则需要提交sitemap给搜索引擎:</p><p>百度则是进入搜索资源平台的站点管理，点击sitemap，添加baidusitemap.xml的路径</p><p>谷歌则是进入Google Search Console，进入站点地图，添加sitemap.xml的路径</p><h3 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h3><p><strong>添加robots.txt</strong></p><p>robots可以告诉搜索引擎，哪些路径的文件允许抓取，哪些不允许抓取，还可以告诉搜索引擎你网站的sitemap</p><p>在 <code>.../source</code> 路径下创建<code>robots.txt</code>文件，里面输入你的robots配置，如果不懂，可以百度robots的语法，修改后保存即可提交。</p><h3 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h3><p><strong>优化URL</strong></p><p>hexo博客默认的文章路径是 <code>域名/年/月/日/文章名称</code></p><p>这样的多层目录搜索引擎爬虫爬起来非常费力，我们则需要优化文章的URL路径。</p><p>进入根目录的<code>_config.yml</code>配置文件，找到<code>permalink</code>，将<code>permalink: :year/:month/:day/:title/</code></p><p>可以修改为</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">:year:month:day/:title/</span></span><br></pre></td></tr></table></figure><p>或</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">:title.html</span></span><br></pre></td></tr></table></figure><p>修改完成后，运行hexo g，即可发现文章的目录结构改变了</p><h3 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h3><p><strong>关键词与描述的优化</strong></p><p>keywords和description是告诉搜索引擎你这个网页的关键词和你这个网页是干什么的，不能乱写。</p><h3 id="7"><a href="#7" class="headerlink" title="7."></a>7.</h3><p><strong>将网页提交给百度搜索引擎</strong></p><p>百度网页的提交有以下几种方式:</p><ul><li>主动推送：最为快速的提交方式，推荐您将站点当天新产出链接立即通过此方式推送给百度，以保证新链接可以及时被百度收录</li><li>自动推送：是轻量级链接提交组件，将自动推送的 JS 代码放置在站点每一个页面源代码中，当页面被访问时，页面链接会自动推送给百度，有利于新页面更快被百度发现</li><li>sitemap：您可以定期将网站链接放到sitemap中，然后将sitemap提交给百度。百度会周期性的抓取检查您提交的sitemap，对其中的链接进行处理，但收录速度慢于主动推送</li><li>手动提交：如果您不想通过程序提交，那么可以采用此种方式，手动将链接提交给百度 </li></ul><p>sitemap提交上面已经说过，不再讲解；手动提交十分麻烦，而且并不灵活，是通过站点管理手动提交链接。</p><p>我们这里主要讲主动推送和自动推送。</p><p><strong>主动推送:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-baidu-url-submit --save</span><br></pre></td></tr></table></figure><p>安装上面的插件，然后修改根目录下的配置文件<code>_config.yml</code>里添加以下内容:</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">baidu_url_submit:</span></span><br><span class="line">  <span class="attr">count:</span> <span class="number">100</span>               <span class="comment"># 提交最新的多少个链接</span></span><br><span class="line">  <span class="attr">host:</span> <span class="string">huihongyhy.xyz</span>    <span class="comment"># 在百度站长平台中添加的域名</span></span><br><span class="line">  <span class="attr">token:</span> <span class="string">your_token</span>      <span class="comment"># 秘钥</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">baidu_urls.txt</span>   <span class="comment"># 文本文档的地址， 新链接会保存在此文本文档里</span></span><br></pre></td></tr></table></figure><p><code>host:</code> 后面对应填写你在百度搜索资源平台中添加的域名</p><p><code>count:</code> 后边对应你要提交最新的多少个链接</p><p><code>token:</code> 后面填的是搜索资源平台里接口调用地址里的<code>token=xxx</code>，这里的xxx，即为你的秘钥。</p><p>之后加入新的deploy</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">type:</span> <span class="string">git</span> <span class="comment">## git的deployer</span></span><br><span class="line">  <span class="attr">repo:</span></span><br><span class="line">  <span class="attr">branch:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">type:</span> <span class="string">baidu_url_submitter</span> <span class="comment">## 百度提交链接的deploy</span></span><br></pre></td></tr></table></figure><p>每次运行hexo g都会产生保存着链接的txt文件，每次hexo d，返回以下类似代码，即为配置成功</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;remain&quot;:49953,&quot;success&quot;:7&#125;</span><br><span class="line">INFO  Deploy done: baidu_url_submitter</span><br></pre></td></tr></table></figure><p>remain是当天可剩余提交的链接数，success是成功提交的链接数</p><p><strong>自动推送:</strong></p><p>在<code>...\themes\default\layout\_partial\head.ejs</code>内添加以下代码:</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> bp = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> curProtocol = <span class="built_in">window</span>.location.protocol.split(<span class="string">&#x27;:&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">if</span> (curProtocol === <span class="string">&#x27;https&#x27;</span>) &#123;</span><br><span class="line">        bp.src = <span class="string">&#x27;https://zz.bdstatic.com/linksubmit/push.js&#x27;</span>;        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        bp.src = <span class="string">&#x27;http://push.zhanzhang.baidu.com/push.js&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> s = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;script&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">    s.parentNode.insertBefore(bp, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure><p>上面的代码是自动推送的JavaScript代码，每次网页被访问，该网页都会被会自动提交。</p><h3 id="8"><a href="#8" class="headerlink" title="8."></a>8.</h3><p><strong>代码压缩</strong></p><p>网页的代码存在大量空白符，压缩代码可以提高网站被访问速度。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-neat --save</span><br></pre></td></tr></table></figure><p>安装以上插件</p><p>修改根目录下的配置文件<code>_config.yml</code>添加以下代码:</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开启压缩</span></span><br><span class="line"><span class="attr">neat_enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">neat_html:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">exclude:</span></span><br><span class="line"><span class="attr">neat_css:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">exclude:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&#x27;**/*.min.css&#x27;</span></span><br><span class="line"><span class="attr">neat_js:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">mangle:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">output:</span></span><br><span class="line">  <span class="attr">compress:</span></span><br><span class="line">  <span class="attr">exclude:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&#x27;**/*.min.js&#x27;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&#x27;**/index.js&#x27;</span></span><br></pre></td></tr></table></figure><hr><p>以上就是我对hexo博客的SEO优化的所有总结，如果对你有所帮助，我会非常高兴。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程文章 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> hexo </tag>
+            
+            <tag> SEO </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>软件卸载再无残留-电脑软件分享-Geek Uninstaller</title>
+      <link href="posts/3/"/>
+      <url>posts/3/</url>
+      
+        <content type="html"><![CDATA[<p>相信很多电脑小白都为电脑卸载软件而困扰,今天我就给大家来推荐一块极速绿色卸载软件-Geek Uninstaller</p><hr><h3 id="推荐geek的原因"><a href="#推荐geek的原因" class="headerlink" title="推荐geek的原因:"></a>推荐geek的原因:</h3><blockquote><p>一是他非常轻捷,不用安装,下载就是exe文件,打开就能用,可存到U盘里,走到哪里用到哪里</p></blockquote><blockquote><p>二是他的清理功能极强,软件卸载再无残留,注册表清的干干净净</p></blockquote><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法:"></a>使用方法:</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><p>Geek Uninstaller分为两个版本,一是免费版,二是专业版,专业版需要花钱,我们到官网,选择免费版下载,为什么推荐免费版呢?因为免费版的功能就已经很全了,而且平常我们用不到专业版的很多功能.</p><p><img src="http://huihongyhy.gitee.io/imgbed/xiezai/2.png"></p><h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><p>将下载下来的Geek Uninstaller打开</p><p><img src="http://huihongyhy.gitee.io/imgbed/xiezai/1.png"></p><h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4><p>在打开的软件中选择要删除的软件，点击卸载便可以便捷卸载软件，同时，也可以通过点击注册表条目，查看注册表</p><p><img src="http://huihongyhy.gitee.io/imgbed/xiezai/3.png"></p><h4 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h4><p>点击卸载,卸载完成后,他会自动检测注册表等残留垃圾</p><p><img src="http://huihongyhy.gitee.io/imgbed/xiezai/4.png"></p><h3 id="提示-此软件支持多种语言"><a href="#提示-此软件支持多种语言" class="headerlink" title="提示:此软件支持多种语言"></a>提示:此软件支持多种语言</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 软件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>你好！世界！灰鸿的空间今天来了!</title>
+      <link href="posts/1/"/>
+      <url>posts/1/</url>
+      
+        <content type="html"><![CDATA[<p>你好世界，2020/7/23，我的空间问世了</p><p>我会在这里发布一些杂乱的文章</p><p>希望大家能够喜欢</p><p>本人水平有限，写不出高技术的文章。</p><p>灰鸿的空间：<a href="https://space.greyh.cn/">https://space.greyh.cn</a></p><p>如果大家想了解更多关于我的信息，</p><p>可以访问：<a href="https://greyh.cn/">https://greyh.cn</a></p><p>大家也可以加入我的QQ群</p><p>群号为：684388580</p><p><img src="https://gitee.com/huihongyhy/imgbed/raw/master/img/first.png" alt="灰鸿YHY"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂谈文章 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 杂谈 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
