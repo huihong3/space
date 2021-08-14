@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://space.greyh.cn/bb/index.html</loc>
+    
+    <lastmod>2021-08-14</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://space.greyh.cn/posts/2/</loc>
     
     <lastmod>2021-08-12</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://space.greyh.cn/link/index.html</loc>
     
     <lastmod>2021-04-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://space.greyh.cn/bb/index.html</loc>
-    
-    <lastmod>2021-03-14</lastmod>
     
   </url>
   
