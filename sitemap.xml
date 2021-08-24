@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://space.greyh.cn/categories/index.html</loc>
+    
+    <lastmod>2021-08-24</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://space.greyh.cn/favourites/index.html</loc>
     
     <lastmod>2021-08-24</lastmod>
@@ -61,13 +68,6 @@
     <loc>https://space.greyh.cn/reward/index.html</loc>
     
     <lastmod>2021-02-15</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://space.greyh.cn/categories/index.html</loc>
-    
-    <lastmod>2021-02-12</lastmod>
     
   </url>
   
@@ -158,6 +158,13 @@
   </url>
   
   <url>
+    <loc>https://space.greyh.cn/tags/%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2021-08-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://space.greyh.cn/tags/%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2021-08-24</lastmod>
     <changefreq>daily</changefreq>
@@ -166,6 +173,13 @@
   
   <url>
     <loc>https://space.greyh.cn/tags/electron/</loc>
+    <lastmod>2021-08-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://space.greyh.cn/tags/%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2021-08-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
